@@ -28,7 +28,7 @@ function buttonDis() {
 buttonDis();
 function buttonEn() {
   if (options.onClose) {
-    // console.log(options.onClose(selectedDates));
+    console.log(options.defaultDate);
     refs.button.removeAttribute('disabled');
   }
 }
