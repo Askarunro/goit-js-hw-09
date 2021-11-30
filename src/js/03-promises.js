@@ -1,3 +1,12 @@
+const refs = {
+  inputDelay: document.querySelector('input[name="delay"]'),
+  inputStep: document.querySelector('input[name="step"]'),
+  inputAmount: document.querySelector('input[name="amount"]'),
+  btnSubmit: document.querySelector('btn'),
+};
+
+refs.btnSubmit.addEventListener('click', createPromise);
+
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
   if (shouldResolve) {
