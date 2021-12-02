@@ -53,17 +53,22 @@ refs.button.addEventListener('click', startTimer);
 
 // Функція startTimer
 function startTimer() {
+  buttonDis();
   const timer = {
     start() {
-      setInterval(() => {
+      const intervalId = setInterval(() => {
         const currentTime = Date.now();
         const deltaTime = dateChange - currentTime;
-        const { days, hours, minutes, seconds } = convertMs(deltaTime);
-        refs.daysSpan.textContent = days;
-        refs.hoursSpan.textContent = hours;
-        refs.minutesSpan.textContent = minutes;
-        refs.secondsSpan.textContent = seconds;
-        console.log(`${days}::${hours}::${minutes}::${seconds}`);
+        if (deltaTime > 1) {
+          const { days, hours, minutes, seconds } = convertMs(deltaTime);
+          refs.daysSpan.textContent = days;
+          refs.hoursSpan.textContent = hours;
+          refs.minutesSpan.textContent = minutes;
+          refs.secondsSpan.textContent = seconds;
+          console.log(`${days}::${hours}::${minutes}::${seconds}`);
+          return;
+        }
+        clearInterval(intervalId);
       }, 1000);
     },
   };
